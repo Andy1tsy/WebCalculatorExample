@@ -1,4 +1,5 @@
 ﻿using WebCalculatorExample.Models;
+using System;
 
 namespace WebCalculatorExample.DBManager
 {
@@ -8,8 +9,17 @@ namespace WebCalculatorExample.DBManager
         {
             using (var expressionContext = new ExpressionContext())
             {
+                try
+                {
                  expressionContext.Expressions.Add(expression);
                  expressionContext.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+
             }
         }
     }
